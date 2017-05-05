@@ -4,7 +4,7 @@
 
 library(shiny)
 shinyUI(fluidPage(
-    titlePanel("Modeling Saving Ratio from Disposable Income"),
+    titlePanel("Modeling Saving Ratio from Disposable Income in the 1960s"),
     sidebarLayout(
         sidebarPanel(
             h3("Instructions"),
