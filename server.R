@@ -49,7 +49,7 @@ shinyServer(function(input, output) {
     output$plot1 <- renderPlot({
         g = ggplot(LifeCycleSavings, aes(x=dpi, y=sr)) +
             geom_point(aes(colour=pop15, size=pop75)) +
-            labs(x = 'disposable income', y='savings ratio')
+            labs(x = 'disposable income (dpi)', y='savings ratio (sr)')
         if (!is.null(model())){
             g = g + geom_abline(intercept=coef(model())[1], slope=coef(model())[2])
         }

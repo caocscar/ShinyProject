@@ -10,7 +10,7 @@ shinyUI(fluidPage(
             h3("Model"),
             textOutput("Mdl"),
             checkboxInput("pop","Include population covariates", value=FALSE),
-            checkboxInput("ddpi","Include ddpi predictor (% growth rate of disposable income)", value=FALSE)
+            checkboxInput("ddpi","Include ddpi covariate (% growth rate of disposable income)", value=FALSE)
         ),
         mainPanel(
             plotOutput("plot1", brush=brushOpts(id="brush1"))
