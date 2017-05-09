@@ -1,7 +1,7 @@
 ---
-title: "Shiny Slide Deck"
+title: "Shiny App for Modeling Savings Ratio"
 author: "Alex Cao"
-date: "May 5, 2017"
+date: "May 9, 2017"
 output: slidy_presentation
 ---
 
@@ -9,27 +9,41 @@ output: slidy_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## R Markdown
+## Shiny App
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+- This app models the Savings Ratio from the Disposable Income of Countries over the time period 1960-1970
+- This data comes from the R dataset **LifeCycleSavings**
+- The dependent variable is sr (savings ratio)
+- The possible covariates are:
+    i. dpi (per-capita disposable income)
+    ii. ddpi (% growth rate of dpi)
+    iii. pop15 (% of population under 15)
+    iv. pop75 (% of population over 75)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+## How-to-Use
 
-## Slide with Bullets
+- Select the points (countries) you want to model
+- Select which covariates you want to include (two choices)
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+The App will automatically update the model after every step.  
+__savings ratio ~ per-capita disposable income__ is the default model in the App.  
+The __dpi__ covariate is included in every model (regardless of the check boxes)
 
-## Slide with R Output
+## Model
 
-```{r cars, echo = TRUE}
-summary(cars)
+```{r screenshot, fig.width=10, fig.height=6, fig.align='center'}
+library(png)
+library(grid)
+img = readPNG('screenshot.png')
+grid.raster(img)
 ```
 
-## Slide with Plot
+## Full Linear Model
 
-```{r pressure}
-plot(pressure)
+The linear model if you include all the countries and all the covariates available in the dataset is:
+
+```{r model, comment=""}
+data("LifeCycleSavings")
+model = lm (sr ~ dpi + pop15 + pop75 + ddpi, data = LifeCycleSavings)
+coef(model)
 ```
-
